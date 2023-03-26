@@ -1,0 +1,13 @@
+{
+  "currentTheme": "ltr",
+  "header": {
+    "shop": "Shop",
+    "products": "Products",
+    "home": "Home",
+    "featured": "Featured",
+    "review": "Review",
+    "contact": "Contact",
+    "blogs": "Blogs",
+    "categories": "Categories"
+  }
+}
