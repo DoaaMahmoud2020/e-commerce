@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl:"https://rateslandapi.venusera.net/api",
-  apiDomain: 'https://rateslandapi.venusera.net/',
+  apiUrl:"https://fakestoreapi.com/",
+  apiDomain: 'https://fakestoreapi.com/',
 };

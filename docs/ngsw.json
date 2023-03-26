@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1679827057713,
+  "timestamp": 1679827719426,
   "index": "/e-commerce/index.html",
   "assetGroups": [
     {
@@ -17,7 +17,7 @@
         "/e-commerce/common.1a55255eae6e6b6b.js",
         "/e-commerce/favicon.ico",
         "/e-commerce/index.html",
-        "/e-commerce/main.3fc843a87f9e9196.js",
+        "/e-commerce/main.3743ac6fb4224b4c.js",
         "/e-commerce/manifest.webmanifest",
         "/e-commerce/polyfills.192bcca7a48c5c49.js",
         "/e-commerce/runtime.105e278f6fdd9009.js",
@@ -125,8 +125,8 @@
     "/e-commerce/assets/image/united-states-flag.png": "95fbdaf1e24cf900a34126d0cbd0f00fd0a0c643",
     "/e-commerce/common.1a55255eae6e6b6b.js": "7e5944a017f054baf46b3c52e3f11fba9058b3c9",
     "/e-commerce/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/e-commerce/index.html": "7dc6dbb9eadda226c1c45bee4e1a06062d5bba6b",
-    "/e-commerce/main.3fc843a87f9e9196.js": "eaf2f63f1877fd915450608fb78efbe3b072220b",
+    "/e-commerce/index.html": "53446adab29056485ef11a91b3bc4bc3ac5696ff",
+    "/e-commerce/main.3743ac6fb4224b4c.js": "c0324880c14a7e8b37322c18498715501dcf7834",
     "/e-commerce/manifest.webmanifest": "20d30c1ce0f4e5a2e3937b2fdcb4d4bb45906624",
     "/e-commerce/polyfills.192bcca7a48c5c49.js": "f61c789d3d3dcea25fb5bc918c97e4d8454dd68a",
     "/e-commerce/runtime.105e278f6fdd9009.js": "658f52a4eff8c11ac43db0b15812d962847ed158",
