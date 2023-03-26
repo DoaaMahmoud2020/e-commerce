@@ -21,14 +21,14 @@ export class HeaderComponent implements OnInit {
     translate.setDefaultLang('en');
   }
   defaultLang: string = 'en';
+ /**
+  * A lifecycle hook that is called after a component's data-bound properties have been initialized.
+  */
   ngOnInit(): void {
-    if (this.common.userInfo.value == null) {
-      // To set user data in userInfo object
-      const data = JSON.parse(localStorage.getItem('user'));
-      if (data != null) {
-        this.common.userInfo = new BehaviorSubject(data as userModel);
-        this.common.userInfo.next(data as userModel);
-      }
+    const userInfo = this.common.userInfo.value;
+    if (userInfo == null) {
+      const data = JSON.parse(localStorage.getItem('user') ?? '{}');
+      this.common.userInfo.next(data as userModel);
     }
   }
   /**
