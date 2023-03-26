@@ -1,0 +1,520 @@
+@import "/src/scss/variables";
+@import "~swiper/swiper-bundle.css";
+
+// Start Section Sliders
+.sliders {
+  .carousel-inner {
+    position: relative;
+    .carousel-item {
+      .content {
+        position: absolute;
+        top: 30%;
+        left: 6%;
+        p {
+          font-size: 2rem;
+          color: $gray-color;
+        }
+        h3 {
+          font-size: 6rem;
+          color: $main-color;
+          padding-top: 0.5rem;
+        }
+        a {
+          @include btn-main;
+          margin-top: 1rem;
+        }
+      }
+      img {
+        min-height: 65vh;
+        object-fit: cover;
+      }
+    }
+  }
+  .carousel {
+    .carousel-control-next,
+    .carousel-control-prev {
+      width: 5rem;
+      height: 5rem;
+      border-radius: $main-border-radius;
+      color: $main-color;
+      // background-color: $main-color;
+      border: $main-border;
+      // box-shadow: $main-box-shadow;
+      top: 45%;
+      margin: 0 3px;
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+    // .carousel-control-prev {
+    //   left: 90%;
+    // }
+    // .carousel-control-next {
+    //   left: 94%;
+    // }
+  }
+}
+// End Section Sliders
+
+// Start Section Special Offer
+.special-Offer {
+  padding: 5rem 0;
+  transition: all 0.2s ease-in-out;
+  .banner {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translateY(-50%);
+      p {
+        font-size: 2rem;
+        color: $gray-color;
+      }
+      h3 {
+        font-size: 3.2rem;
+        color: $main-color;
+        padding-top: 0.5rem;
+      }
+      a {
+        @include btn-main;
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &:hover img {
+      transform: scale(1.2);
+    }
+  }
+}
+// End Section Special Offer
+
+// Start Section Exclusive Products
+.products {
+  .heading {
+    font-size: 3.5rem;
+    color: $main-color;
+    span {
+      color: $red-color;
+    }
+  }
+  .nav {
+    font-size: 1.7rem;
+    .nav-item .nav-link {
+      color: $gray-color;
+      cursor: pointer;
+      &:hover,
+      &.active {
+        color: $red-color;
+      }
+    }
+  }
+  .card {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    position: relative;
+    overflow: hidden;
+    margin: 5px 0;
+    &.active {
+      animation: fadeUp 0.4s linear;
+    }
+    .image {
+      height: 35rem;
+      width: 100%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &:hover img {
+      transform: scale(1.1);
+    }
+    .icons {
+      height: 35rem;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transform: scale(0);
+      z-index: 1;
+      a {
+        font-size: 2rem;
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        text-align: center;
+        background: #fff;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        margin: 0 2px;
+        @extend %text-stroke;
+      }
+    }
+    &:hover .icons {
+      transform: scale(1);
+    }
+    .card-title {
+      font-size: 2rem;
+      color: $main-color;
+      font-weight: normal;
+    }
+    .card-text {
+      font-size: 2.2rem;
+      font-weight: bolder;
+      color: $main-color;
+      .cut {
+        font-size: 1.5rem;
+        text-decoration: line-through;
+        color: $gray-color;
+      }
+      .offers {
+        font-size: 2rem;
+        color: $red-color;
+      }
+    }
+    .stars {
+      font-size: 1.7rem;
+      .fa-star {
+        color: gold;
+      }
+      span {
+        color: $gray-color;
+      }
+    }
+  }
+}
+// End Section Exclusive Products
+
+// Start Deal Section
+.deal {
+  background: linear-gradient(#fff 20%, #f9f9f9 20.1%);
+  .content {
+    span {
+      font-size: 1.7rem;
+      color: $red-color;
+    }
+    h3 {
+      font-size: 3rem;
+      padding: 0.5rem 0;
+      color: $main-color;
+    }
+    p {
+      font-size: 2rem;
+      color: $gray-color;
+    }
+    a {
+      @include btn-main;
+    }
+  }
+}
+// End Deal Section
+
+// Start Section Featured Products
+.feature-products {
+  .heading {
+    font-size: 3.5rem;
+    color: $red-color;
+    span {
+      color: $main-color;
+    }
+  }
+  .card {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    position: relative;
+    overflow: hidden;
+    margin: 5px 0;
+    &.active {
+      animation: fadeUp 0.4s linear;
+    }
+    .image {
+      height: 35rem;
+      width: 100%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &:hover img {
+      transform: scale(1.1);
+    }
+    .icons {
+      height: 35rem;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transform: scale(0);
+      z-index: 1;
+      a {
+        font-size: 2rem;
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        text-align: center;
+        background: #fff;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        margin: 0 2px;
+        @extend %text-stroke;
+      }
+    }
+    &:hover .icons {
+      transform: scale(1);
+    }
+    .card-title {
+      font-size: 2rem;
+      color: $main-color;
+      font-weight: normal;
+    }
+    .card-text {
+      font-size: 2.2rem;
+      font-weight: bolder;
+      color: $main-color;
+      .cut {
+        font-size: 1.5rem;
+        text-decoration: line-through;
+        color: $gray-color;
+      }
+      .offers {
+        font-size: 2rem;
+        color: $red-color;
+      }
+    }
+    .stars {
+      font-size: 1.7rem;
+      .fa-star {
+        color: gold;
+      }
+      span {
+        color: $gray-color;
+      }
+    }
+  }
+}
+// End Section Featured Products
+
+// Start Section Client's Review
+.client-review {
+  background-color: $light-bg;
+  padding: 5rem 0;
+  .heading {
+    font-size: 3.5rem;
+    color: $main-color;
+    span {
+      color: $red-color;
+    }
+  }
+  .card {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    text-align: center;
+    p {
+      font-size: 1.4rem;
+      color: $gray-color;
+      line-height: 2;
+    }
+    .user {
+      padding-top: 2rem;
+      img {
+        width: 7rem;
+        height: 7rem;
+        object-fit: cover;
+      }
+      .info {
+        h3 {
+          font-size: 2.2rem;
+          color: $main-color;
+        }
+        span {
+          font-size: 1.5rem;
+          color: $red-color;
+        }
+      }
+    }
+  }
+}
+// End Section Client's Review
+
+// Start Section Contact Us
+.contact-us {
+  padding: 3rem 0;
+  .heading {
+    font-size: 3.5rem;
+    color: $red-color;
+    span {
+      color: $main-color;
+    }
+  }
+  .card {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    text-align: center;
+    min-height: 25rem;
+    .icon {
+      i {
+        font-size: 2.5rem;
+        border-radius: 50%;
+        border: 0.1rem solid rgba(0, 0, 0, 0.3);
+        width: 6rem;
+        height: 6rem;
+        line-height: 6rem;
+        text-align: center;
+        margin: 1.4rem auto;
+        @extend %text-stroke;
+      }
+    }
+    .card-body {
+      h3 {
+        font-size: 2.2rem;
+        padding: 0.8rem 0;
+        color: $main-color;
+      }
+      p {
+        font-size: 1.5rem;
+        line-height: 2;
+        color: $gray-color;
+      }
+    }
+  }
+  .contact-info {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    padding: 2rem;
+    h1 {
+      font-size: 3rem;
+      color: $main-color;
+    }
+    .contact-form {
+      button {
+        @include btn-main;
+      }
+      .form-control {
+        font-size: 1.7rem;
+        padding: 0.8rem;
+      }
+      input {
+        border-radius: $main-border-radius;
+      }
+    }
+  }
+  .map-info {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    border-radius: $main-border-radius;
+    padding: 2rem;
+    .map {
+      width: 100%;
+      height: 39.5rem;
+    }
+  }
+}
+// End Section Contact Us
+
+// Start Section Our Blogs
+.our-blogs {
+  padding: 3rem 0;
+  .heading {
+    font-size: 3.5rem;
+    color: $main-color;
+    span {
+      color: $red-color;
+    }
+  }
+  .card {
+    border-radius: $main-border-radius;
+    box-shadow: $main-box-shadow;
+    border: $main-border;
+    overflow: hidden;
+    .image {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      img {
+        object-fit: cover;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    .card-body {
+      padding: 2rem;
+      h3 {
+        font-size: 2.2rem;
+        color: $main-color;
+        padding: 1rem 0;
+      }
+      p {
+        font-size: 1.4rem;
+        color: $gray-color;
+        line-height: 2;
+      }
+      a.btn {
+        @include btn-main;
+      }
+      .icons {
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.3);
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        a {
+          text-decoration: none;
+          font-size: 1.5rem;
+          i {
+            color: $red-color;
+            padding: 0 0.4rem;
+          }
+          span {
+            color: $gray-color;
+          }
+        }
+      }
+    }
+  }
+}
+// End Section Our Blogs
+
+
+// media queries
+@media (max-width: 450px) {
+  .special-Offer .banner .content {
+    h3 {
+      font-size: 2rem;
+    }
+  }
+}
+
+::ng-deep.swiper-button-next,
+::ng-deep.swiper-button-prev {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: $main-box-shadow;
+  border: $main-border;
+  color: $main-color;
+
+  &:hover {
+    background: $main-color;
+    color: #fff;
+  }
+}
+
+::ng-deep.swiper-button-next::after,
+::ng-deep.swiper-button-prev::after {
+  font-size: 2rem;
+}

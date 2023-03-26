@@ -1,0 +1,60 @@
+<div [style.direction]="'utils.dir'|translate">
+  <!-- Start Product Landing Section -->
+  <section class="product d-flex justify-content-center align-items-center py-5">
+    <div class="container">
+      <div class="row text-center align-items-center text-white">
+        <!-- Start All Products Info Section-->
+        <mat-card>
+          <h1>Get All Categories</h1>
+        </mat-card>
+        <h2>mat-table paginator</h2>
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Categories Filter list start -->
+            <mat-tab-group (selectedTabChange)="getProductsByCateg($event.tab.textLabel)">
+              <mat-tab [label]="item" *ngFor="let item of categoriesData">
+                <div class="container py-5 products">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-item="featured"
+                    *ngFor="let prod of productsData">
+                      <div class="card">
+                        <div class="icons d-flex justify-content-center align-items-center position-absolute">
+                          <a href="#" class="fas fa-shopping-cart"></a>
+                          <a href="#" class="fas fa-heart"></a>
+                          <a href="#" class="fas fa-search"></a>
+                          <a [routerLink]="['/products/view-product',prod?.id]" class="fas fa-eye"></a>
+                        </div>
+                        <div class="image">
+                          <img [src]="prod.image" class="card-img-top" alt="Product#">
+                        </div>
+                        <div class="card-body">
+                          <h3 class="card-title" role="button" [routerLink]="['/products/view-product',prod?.id]">{{prod.title.slice(0,50)}}</h3>
+                          <!-- <span class="px-3 cut">$25.00</span> -->
+                          <p class="card-text mb-2">${{prod.price}} <span class="offers">20%
+                              Off</span></p>
+                          <div class="stars">
+                            <span class="px-2">{{prod?.rating?.rate}}</span>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="px-2">({{prod?.rating?.count}})</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+            <!-- Categories Filter list End -->
+          </div>
+        </div>
+        <!-- End All Products Info Section-->
+      </div>
+    </div>
+  </section>
+</div>
+<!-- End Product Landing Section -->
+<ngx-loading [show]="loading"></ngx-loading>

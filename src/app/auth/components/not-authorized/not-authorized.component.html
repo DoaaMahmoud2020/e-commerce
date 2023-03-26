@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center" [dir]="'utils.dir'|translate">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="card col-lg-6 col-sm-12 p-3">
+        <div class="card-body text-center" *ngIf="status === 'pending'">
+          <h2 class="pt-1 pb-2 text-primary">No Permission !!! </h2>
+          <p class="text-muted mb-1">
+            {{'auth.Not-authorized'|translate}}
+          </p>
+          <p class="text-muted mb-1">
+            {{'auth.msg-not-authorized1'|translate}}
+          </p>
+          <p class="text-muted mb-1">
+            {{'auth.msg-not-authorized2'|translate}}
+          </p>
+          <p class="text-muted">
+            You can go back to <a class="fw-bold" [routerLink]="['/']" role="button">Home</a>
+          </p>
+          <img src="assets/image/forbidden.png" alt="" class="py-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

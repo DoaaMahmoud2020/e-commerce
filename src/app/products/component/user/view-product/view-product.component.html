@@ -1,0 +1,49 @@
+<!-- Start Section Product Details -->
+<section class="prod-details">
+  <div class="container">
+    <div class="card details-card p-0">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <img class="img-fluid details-img h-100" [src]="productData.image" alt="">
+        </div>
+        <div class="col-md-6 col-sm-12 description-container p-5">
+          <div class="main-description">
+            <p class="product-category mb-0">{{productData.category}}</p>
+            <h3>{{(productData.title.slice(0,50))}}</h3>
+            <hr>
+            <p class="product-price">${{productData.price}}</p>
+
+            <form class="add-inputs d-flex">
+              <input type="number" class="form-control" id="cart_quantity" name="cart_quantity" value="1" min="1"
+                max="10">
+              <button name="add_to_cart" type="submit" class="btn btn-primary">Add to cart</button>
+              <button name="add_to_cart" type="submit" class="btn btn-primary mx-2">Add to Wishlist</button>
+            </form>
+
+            <div class="stars py-4">
+              <span class="px-2">{{productData?.rating?.rate}}</span>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span class="px-2">({{productData?.rating?.count}})</span>
+            </div>
+            <hr>
+
+
+            <p class="product-title mt-4 mb-1">About this product</p>
+            <p class="product-description mb-4">
+              {{productData.description}}
+            </p>
+
+            <hr>
+          </div>
+        </div>
+      </div>
+      <!-- End row -->
+    </div>
+  </div>
+</section>
+<!-- End Section Product Details -->
+<ngx-loading [show]="loading"></ngx-loading>

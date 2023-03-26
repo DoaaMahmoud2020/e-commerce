@@ -1,0 +1,77 @@
+<!-- Start Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#" class="logo"><i class="fas fa-shopping-cart"></i> {{'header.shop' | translate}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"
+      aria-controls="mainmenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainmenu">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0 g-2">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">{{'header.home' | translate}}</a>
+        </li>
+        <li class="nav-item" *ngIf="common.userInfo?.value?.roleId===2">
+          <a class="nav-link" [routerLink]="['/products']">{{'header.products' | translate}}</a>
+        </li>
+        <li class="nav-item" *ngIf="common.userInfo?.value?.roleId===1">
+          <a class="nav-link" [routerLink]="['/products/category-product']">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Featured</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blogs</a>
+        </li>
+
+      </ul>
+      <form class="d-flex">
+        <div class="icons">
+          <div id="menu-btn" class="fas fa-bars d-none"></div>
+
+          <a (click)="changeLangage('en')" *ngIf="defaultLang==='ar'" class="fas " data-toggle="tooltip"
+            data-placement="top" title="Change Country">
+            <img class="lang-img img-fluid" src="/assets/image/united-states-flag.png" alt="" title="En"></a>
+
+          <a (click)="changeLangage('ar')" *ngIf="defaultLang==='en'" class="fas " data-toggle="tooltip"
+            data-placement="top" title="Change Country">
+            <img class="lang-img img-fluid" src="/assets/image/egypt-flag.png" alt="" title="Ar"></a>
+
+          <div id="search-btn" class="fas fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal"></div>
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a *ngIf="common.userInfo?.value !=null" (click)="singout()" class="fas fa-sign-out-alt" data-toggle="tooltip"
+            data-placement="top" title="Sign Out"></a>
+          <a *ngIf="common.userInfo?.value ==null" [routerLink]="['/login']" class="fas fa-sign-in-alt"
+            data-toggle="tooltip" data-placement="top" title="Sign In"></a>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- End Navbar Section -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
