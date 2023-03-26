@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { userModel } from '../models/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,9 @@ export class CommonService {
   private header: HttpHeaders = new HttpHeaders();
 
   public userInfo = new BehaviorSubject<userModel | null>(null);
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private _snackBar: MatSnackBar) {
+    
+  }
 
   /**
    * This is general get function
@@ -73,6 +76,13 @@ export class CommonService {
     return this.http.delete(this.baseURL + path, {
       headers: this.header,
       params: query,
+    });
+  }
+
+  openSnackBar(message: string, action: string = 'ok') {
+    this._snackBar.open(message, action, {
+      duration: 1000,
+      verticalPosition: 'top',
     });
   }
 }

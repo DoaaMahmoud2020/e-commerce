@@ -31,9 +31,10 @@ export class AuthGuard implements CanActivate {
       },
       {
         roleId: 2, // Admin
-        permissions: ['products','edit-product','new-product'],
+        permissions: ['products','product-add-edit'],
       },
     ];
+  /* This is a guard which is used to check user is authorized or not. */
     return this.common.userInfo.pipe(
       take(1),
       map((user) => {

@@ -1,7 +1,8 @@
 <!-- Start Navbar Section -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#" class="logo"><i class="fas fa-shopping-cart"></i> {{'header.shop' | translate}}</a>
+    <a class="navbar-brand" class="logo" [routerLink]="['']"><i class="fas fa-shopping-cart"></i> {{'header.shop' |
+      translate}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"
       aria-controls="mainmenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,25 +10,26 @@
     <div class="collapse navbar-collapse" id="mainmenu">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0 g-2">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">{{'header.home' | translate}}</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['']">{{'header.home' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="common.userInfo?.value?.roleId===2">
           <a class="nav-link" [routerLink]="['/products']">{{'header.products' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="common.userInfo?.value?.roleId===1">
-          <a class="nav-link" [routerLink]="['/products/category-product']">Categories</a>
+          <a class="nav-link" [routerLink]="['/products/category-product']">
+            {{'header.categories' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Featured</a>
+          <a class="nav-link" role="menu">{{'header.featured' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Review</a>
+          <a class="nav-link" role="menu">{{'header.review' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" [routerLink]="['/contact-us']">{{'header.contact' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Blogs</a>
+          <a class="nav-link" role="menu">{{'header.blogs' | translate}}</a>
         </li>
 
       </ul>
@@ -44,8 +46,8 @@
             <img class="lang-img img-fluid" src="/assets/image/egypt-flag.png" alt="" title="Ar"></a>
 
           <div id="search-btn" class="fas fa-search" data-bs-toggle="modal" data-bs-target="#exampleModal"></div>
-          <a href="#" class="fas fa-shopping-cart"></a>
-          <a href="#" class="fas fa-heart"></a>
+          <a class="fas fa-shopping-cart"></a>
+          <a class="fas fa-heart"></a>
           <a *ngIf="common.userInfo?.value !=null" (click)="singout()" class="fas fa-sign-out-alt" data-toggle="tooltip"
             data-placement="top" title="Sign Out"></a>
           <a *ngIf="common.userInfo?.value ==null" [routerLink]="['/login']" class="fas fa-sign-in-alt"

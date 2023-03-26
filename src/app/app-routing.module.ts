@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'contact-us',
+    loadChildren: () => import('./contact-us/contact-us.module').then((m) => m.ContactUsModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',

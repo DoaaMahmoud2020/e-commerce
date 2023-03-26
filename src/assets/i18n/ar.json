@@ -3,6 +3,11 @@
   "header": {
     "shop": "شوب",
     "products": "المنتجات",
-    "home": "الرئيسية"
+    "home": "الرئيسية",
+    "featured": "المميزات",
+    "review": "الريفيو",
+    "contact": "اتصل بنا",
+    "blogs": "المدونات",
+    "categories": "الفئات"
   }
 }

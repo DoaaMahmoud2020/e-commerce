@@ -16,6 +16,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeComponent } from './home/home.component';
 import { SwiperModule } from 'swiper/angular';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ContactUsComponent } from './contact-us/component/contact-us/contact-us.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     // MatCardModule,
     ReactiveFormsModule,
     SwiperModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

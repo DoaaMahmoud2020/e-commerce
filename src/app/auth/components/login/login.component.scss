@@ -3,77 +3,84 @@
 // Start Login Section
 .login {
   padding: 100px 0;
-}
-mat-card {
-  max-width: 400px;
-  margin: 0 auto;
-  @include custom-card;
-}
+  .header h1 {
+    font-size: 25px;
+    color: $main-color;
+    font-weight: 500;
+  }
+  .btn-login {
+    @include btn-main;
+  }
+  mat-card {
+    max-width: 400px;
+    margin: 0 auto;
+    @include custom-card;
+  }
 
-mat-card-title {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 16px;
-}
+  mat-card-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-mat-form-field {
-  width: 100%;
-  max-width: 300px;
-  margin-bottom: 16px;
-}
+  mat-form-field {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 16px;
+  }
 
-button {
-  width: 100%;
-  max-width: 300px;
-}
-mat-card {
-  max-width: 600px;
-  margin: 2em auto;
-  text-align: center;
-  max-height: 600px;
-  padding: 2rem;
-}
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
+  mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+    max-height: 600px;
+    padding: 2rem;
+  }
 
-.header {
-  text-align: center;
-}
-.full-width {
-  width: 100%;
-}
+  .header {
+    text-align: center;
+  }
+  .full-width {
+    width: 100%;
+  }
 
-.button-row {
-  padding-top: 5px;
-}
+  .button-row {
+    padding-top: 5px;
+  }
 
-.button-row a {
-  margin-right: 8px;
-  text-align: center;
-}
+  .button-row a {
+    margin-right: 8px;
+    text-align: center;
+  }
 
-.forget-password {
-  padding-left: 0px;
-}
+  .forget-password {
+    padding-left: 0px;
+  }
 
-.usernameInput {
-  padding-top: 10px;
-}
+  .usernameInput {
+    padding-top: 10px;
+  }
 
-.contentBody {
-  padding: 60px 1rem;
-  background: #1b6ca8;
-  display: block;
-}
+  .contentBody {
+    padding: 60px 1rem;
+    background: #1b6ca8;
+    display: block;
+  }
 
-.aLink {
-  float: right;
-  padding-right: 60px;
-  text-decoration: none;
+  .aLink {
+    float: right;
+    padding-right: 60px;
+    text-decoration: none;
+  }
 }
-
 // End Login Section

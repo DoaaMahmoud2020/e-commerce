@@ -54,11 +54,12 @@ export class LoginComponent implements OnInit {
         // To set user info in behaviorSubject
         this.common.userInfo.next(userInfo);
         // Navigate to home page
-        this.router
-          .navigateByUrl('/', { skipLocationChange: true })
-          .then(() => {
-            this.router.navigate(['/']);
-          });
+        this.router.navigate(['/']);
+        // this.router
+        //   .navigateByUrl('/', { skipLocationChange: true })
+        //   .then(() => {
+        //     this.router.navigate(['/']);
+        //   });
       }
       else
       this.isNotValid=true;

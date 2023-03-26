@@ -3,6 +3,11 @@
   "header": {
     "shop": "Shop",
     "products": "Products",
-    "home": "Home"
+    "home": "Home",
+    "featured": "Featured",
+    "review": "Review",
+    "contact": "Contact",
+    "blogs": "Blogs",
+    "categories": "Categories"
   }
 }
