@@ -24,10 +24,15 @@
     transform: translateY(-50%);
   }
 
-  .main-description h3 {
-    font-size: 2rem;
+  .main-description {
+    h3 {
+      font-size: 2rem;
+    }
+    .product-category {
+      color: $red-color;
+      font-weight: 500;
+    }
   }
-
   .add-inputs,
   .add-inputs input {
     margin-right: 10px;
@@ -54,6 +59,14 @@
     }
     span {
       color: $gray-color;
+    }
+  }
+  .btn-cart {
+    background-color: $red-color;
+    cursor: pointer;
+    color: #fff;
+    &:hover {
+      background-color: $main-color;
     }
   }
 }

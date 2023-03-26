@@ -1,29 +1,87 @@
+<!-- Start Product Section -->
 <div [style.direction]="'utils.dir'|translate">
   <!-- Start Product Landing Section -->
   <section class="product d-flex justify-content-center align-items-center py-5">
     <div class="container">
       <div class="row text-center align-items-center text-white">
         <!-- Start All Products Info Section-->
-        <mat-card>
-          <h1>Get All Products</h1>
-        </mat-card>
-        <h2>mat-table paginator</h2>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-            <td mat-cell *matCellDef="let product">{{ product[column] }}</td>
-          </ng-container>
+        <mat-toolbar>
+          <span>Get All Products</span>
+          <span class="example-spacer"></span>
+          <button mat-raised-button (click)="openAddEditProdForm()">
+            Add Product
+          </button>
+        </mat-toolbar>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let productrow; columns: displayedColumns"></tr>
-        </table>
-        <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons></mat-paginator>
+        <div class="main-body">
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+              </ng-container>
+
+              <!-- Progress Column -->
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let row"> {{row.title}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                <td mat-cell *matCellDef="let row"> {{row.price}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button color="primary" (click)="openEditForm(row)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="openTempDialog(row.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+            </table>
+
+            <mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+
         <!-- End All Products Info Section-->
       </div>
     </div>
   </section>
 </div>
-<!-- End Product Landing Section -->
+
+<!-- End Product Section -->
+
 
 <ngx-loading [show]="loading"></ngx-loading>
+
+<!-- Delete Modal -->
+<ng-template #dialogRef let-mydata>
+  <h1 mat-dialog-title>Delete Product</h1>
+  <div mat-dialog-content>
+    Would you like to delete this product ?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close class="btn ">No</button>
+    <button mat-raised-button mat-dialog-close cdkFocusInitial (click)="deleteProduct()"
+      class="mx-2 btn-delete">Ok</button>
+  </div>
+</ng-template>

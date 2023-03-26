@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-6 col-sm-12 description-container p-5">
           <div class="main-description">
-            <p class="product-category mb-0">{{productData.category}}</p>
+            <h2 class="product-category mb-0">{{productData.category}}</h2>
             <h3>{{(productData.title.slice(0,50))}}</h3>
             <hr>
             <p class="product-price">${{productData.price}}</p>
@@ -16,8 +16,10 @@
             <form class="add-inputs d-flex">
               <input type="number" class="form-control" id="cart_quantity" name="cart_quantity" value="1" min="1"
                 max="10">
-              <button name="add_to_cart" type="submit" class="btn btn-primary">Add to cart</button>
-              <button name="add_to_cart" type="submit" class="btn btn-primary mx-2">Add to Wishlist</button>
+              <button name="add_to_cart" type="submit" class="btn-cart"
+              mat-raised-button>Add to cart</button>
+              <button name="add_to_cart" type="submit" class="btn btn-wishlist mx-2"
+              mat-raised-button>Add to Wishlist</button>
             </form>
 
             <div class="stars py-4">

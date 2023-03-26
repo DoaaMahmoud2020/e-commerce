@@ -1,0 +1,40 @@
+<div mat-dialog-title>
+  <h1>Product Form</h1>
+</div>
+<form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+      <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput type="text" placeholder="text" formControlName="title">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>price</mat-label>
+              <input type="number" matInput placeholder="20" formControlName="price">
+          </mat-form-field>
+      </div>
+
+      <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input matInput type="text" placeholder="text" formControlName="description">
+          </mat-form-field>
+      </div>
+
+      <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category">
+                  <mat-option *ngFor="let val of categoriesData" [value]="val">{{val}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+  </div>
+  <div mat-dialog-actions class="action">
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button  type="submit" class="btn-save">{{data ? 'Update': 'Save'}}</button>
+  </div>
+</form>
+
+<ngx-loading [show]="loading"></ngx-loading>

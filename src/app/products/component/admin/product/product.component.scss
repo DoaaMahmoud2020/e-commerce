@@ -1,3 +1,35 @@
+@import "src/scss/variables";
+
+// Start Section Product 
+.product {
 table {
   width: 100%;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1348px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.action {
+  display: flex;
+  gap: 5px;
+}
+}
+.btn-delete {
+  background-color: $red-color;
+  cursor: pointer;
+  color: #fff;
+  &:hover {
+    background-color: $main-color;
+  }
+}
+// End Section Product 

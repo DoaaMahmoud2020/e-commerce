@@ -10,26 +10,45 @@ import { CommonService } from 'src/app/shared/services/common.service';
 export class CategoryProductComponent implements OnInit {
   constructor(private common: CommonService) {}
   categoriesData: [] = [];
-  loading:boolean=false;
+  loading: boolean = false;
 
   productsData: Product[] = [];
+  /**
+   * The ngOnInit() function is a lifecycle hook that is called after Angular has initialized all
+   * data-bound properties of a directive
+   */
   ngOnInit(): void {
     this.getAllCategories();
   }
+  /**
+   * It makes a GET request to the server to get all the categories
+   */
   getAllCategories() {
-    this.loading=true;
-    this.common.get('products/categories', {}).subscribe((result: any) => {
-      this.categoriesData = result;
-      this.loading=false;
+    this.loading = true;
+    this.common.get('products/categories', {}).subscribe({
+      next: (result: any) => {
+        this.categoriesData = result;
+        this.loading = false;
+      },
+      error: (err: any) => {
+        this.loading = false;
+      },
     });
   }
-  getProductsByCateg(categoryName:string) {
-    this.loading=true;
-    this.common
-      .get('products/category/' + categoryName, {})
-      .subscribe((result: any) => {
+/**
+ * It gets the products by category name
+ * @param {string} categoryName - The name of the category you want to get the products from.
+ */
+  getProductsByCateg(categoryName: string) {
+    this.loading = true;
+    this.common.get('products/category/' + categoryName, {}).subscribe({
+      next: (result: any) => {
         this.productsData = result;
-        this.loading=false;
-      });
+        this.loading = false;
+      },
+      error: (err: any) => {
+        this.loading = false;
+      },
+    });
   }
 }
