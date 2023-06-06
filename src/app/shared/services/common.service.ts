@@ -24,7 +24,11 @@ export class CommonService {
    * @param removeLang - (Optional) Whether to remove the 'lang' parameter from the query.
    * @returns An Observable that emits the response data.
    */
-  get(path: string,query: any,removeLang: boolean = false): Observable<Object> {
+  get(
+    path: string,
+    query: any,
+    removeLang: boolean = false
+  ): Observable<Object> {
     const payload: { headers: HttpHeaders; params: any } = {
       headers: this.header,
       params: { ...query },
@@ -89,6 +93,13 @@ export class CommonService {
       verticalPosition: 'top',
     });
   }
+  /**
+   * TrackBy function used in ngFor directive to track items by their unique identifier.
+   *
+   * @param index - The index of the current item in the iteration.
+   * @param item - The current item in the iteration.
+   * @returns The unique identifier for the item.
+   */
   trackByFn(index: number, item: any): number {
     return item.id; // Assuming each item has a unique "id" property
   }
