@@ -37,10 +37,6 @@ export class HomeComponent implements OnInit {
         slidesPerView: 4,
       },
     },
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev'
-    // },
   };
 
   configClientReviews: SwiperOptions = {
@@ -60,10 +56,6 @@ export class HomeComponent implements OnInit {
         slidesPerView: 2,
       },
     },
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev'
-    // },
   };
 
   configBlogs: SwiperOptions = {
@@ -88,10 +80,6 @@ export class HomeComponent implements OnInit {
         slidesPerView: 3,
       },
     },
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev'
-    // },
   };
 
 }

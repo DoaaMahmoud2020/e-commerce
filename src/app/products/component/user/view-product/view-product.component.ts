@@ -14,10 +14,10 @@ export class ViewProductComponent implements OnInit {
   loading: boolean = false;
 
   constructor(
-    private common: CommonService,
+    private commonService: CommonService,
     private activatedRoute: ActivatedRoute
   ) {
-   /* Subscribing to the `paramMap` observable, which is an observable of the parameters of the route. */
+    /* Subscribing to the `paramMap` observable, which is an observable of the parameters of the route. */
     this.activatedRoute.paramMap.subscribe((param) => {
       //To get productId
       this.productId = param.get('id');
@@ -29,18 +29,18 @@ export class ViewProductComponent implements OnInit {
 
   ngOnInit(): void {}
 
-/**
- * It makes a GET request to the `products/:id` endpoint, and assigns the result to the `productData`
- * variable
- */
+  /**
+   * It makes a GET request to the `products/:id` endpoint, and assigns the result to the `productData`
+   * variable
+   */
   getProductDetails() {
     this.loading = true;
-    this.common.get('products/' + this.productId, {}).subscribe({
-      next: (result: any) => {
+    this.commonService.get('products/' + this.productId, {}).subscribe({
+      next: (result: Product) => {
         this.productData = result;
         this.loading = false;
       },
-      error: (err: any) => {
+      error: (err: Error) => {
         this.loading = false;
       },
     });

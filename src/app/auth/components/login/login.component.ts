@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { roles, userModel } from 'src/app/shared/models/user';
 import { CommonService } from 'src/app/shared/services/common.service';
+import { roles, userModel } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +15,7 @@ import { CommonService } from 'src/app/shared/services/common.service';
 })
 export class LoginComponent implements OnInit {
   hide: boolean = false;
-  isNotValid:boolean=false;
+  isNotValid: boolean = false;
   // Users data info
   userData: userModel[] = [
     { userName: 'user', password: 'user', roleId: roles.user },
@@ -24,11 +23,11 @@ export class LoginComponent implements OnInit {
   ];
   constructor(
     private fb: FormBuilder,
-    private common: CommonService,
+    private oommonService: CommonService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   // To initialize reactive form controls
   loginForm: FormGroup = this.fb.group({
     username: ['', [Validators.required]],
@@ -41,28 +40,19 @@ export class LoginComponent implements OnInit {
    */
   onLogin() {
     if (this.loginForm.valid) {
-      // To get user  logged in
-      const userInfo = this.userData.find((x) => {
+      const userInfo = this.userData.find((value) => {
         return (
-          x.userName === this.loginForm.value.username &&
-          x.password === this.loginForm.value.password
+          value.userName === this.loginForm.value.username &&
+          value.password === this.loginForm.value.password
         );
       });
       if (userInfo) {
-        // To set user info in localStorage
         localStorage.setItem('user', JSON.stringify(userInfo));
-        // To set user info in behaviorSubject
-        this.common.userInfo.next(userInfo);
-        // Navigate to home page
+        this.oommonService.userInfo.next(userInfo);
         this.router.navigate(['/']);
-        // this.router
-        //   .navigateByUrl('/', { skipLocationChange: true })
-        //   .then(() => {
-        //     this.router.navigate(['/']);
-        //   });
       }
       else
-      this.isNotValid=true;
+        this.isNotValid = true;
     }
   }
 }

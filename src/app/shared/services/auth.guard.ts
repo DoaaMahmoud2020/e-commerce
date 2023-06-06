@@ -14,7 +14,7 @@ import { CommonService } from './common.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private common: CommonService, private router: Router) {}
+  constructor(private commonService: CommonService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    //this array contain user permissions accroding role id
+    //This array contain user permissions accroding role id
     const userPermissions: userPermission[] = [
       {
         roleId: 1, // User
@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
       },
     ];
   /* This is a guard which is used to check user is authorized or not. */
-    return this.common.userInfo.pipe(
+    return this.commonService.userInfo.pipe(
       take(1),
       map((user) => {
         const IsAuth = !!user;

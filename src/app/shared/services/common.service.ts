@@ -14,73 +14,77 @@ export class CommonService {
   private header: HttpHeaders = new HttpHeaders();
 
   public userInfo = new BehaviorSubject<userModel | null>(null);
-  constructor(public http: HttpClient, private _snackBar: MatSnackBar) {
-    
-  }
+  constructor(public httpClient: HttpClient, private snackBar: MatSnackBar) {}
 
   /**
-   * This is general get function
-   * @param path
-   * @param query
-   * @param [removeLang]
-   * @returns get
+   * Performs an HTTP GET request.
+   *
+   * @param path - The API endpoint path.
+   * @param query - The query parameters.
+   * @param removeLang - (Optional) Whether to remove the 'lang' parameter from the query.
+   * @returns An Observable that emits the response data.
    */
-  get(
-    path: string,
-    query: any,
-    removeLang: boolean = false
-  ): Observable<Object> {
-    var payload = {
+  get(path: string,query: any,removeLang: boolean = false): Observable<Object> {
+    const payload: { headers: HttpHeaders; params: any } = {
       headers: this.header,
-      params: {
-        ...query,
-      },
+      params: { ...query },
     };
+
     if (removeLang) {
       delete payload.params.lang;
     }
-    return this.http.get(this.baseURL + path, payload);
+
+    return this.httpClient.get(this.baseURL + path, payload);
   }
 
   /**
-   * This is general post function
-   * @param path
-   * @param payload
-   * @returns post
+   * Sends an HTTP POST request.
+   *
+   * @param path - The API endpoint path.
+   * @param payload - The payload to send with the request.
+   * @returns An Observable that emits the response data.
    */
   post(path: string, payload: Object): Observable<Object> {
-    return this.http.post(this.baseURL + path, payload, {
+    return this.httpClient.post(this.baseURL + path, payload, {
       headers: this.header,
     });
   }
 
   /**
-   * This is general update function
-   * @param path
-   * @param payload
-   * @returns put
+   * Sends an HTTP PUT request.
+   *
+   * @param path - The API endpoint path.
+   * @param payload - The payload to send with the request.
+   * @returns An Observable that emits the response data.
    */
   put(path: string, payload: Object): Observable<Object> {
-    return this.http.put(this.baseURL + path, payload, {
+    return this.httpClient.put(this.baseURL + path, payload, {
       headers: this.header,
     });
   }
 
   /**
-   * This is general delete function
-   * @param path
-   * @param query
-   * @returns delete
+   * Sends an HTTP DELETE request.
+   *
+   * @param path - The API endpoint path.
+   * @param query - The query parameters.
+   * @returns An Observable that emits the response data.
    */
   delete(path: string, query: any): Observable<Object> {
-    return this.http.delete(this.baseURL + path, {
+    return this.httpClient.delete(this.baseURL + path, {
       headers: this.header,
       params: query,
     });
   }
 
-  openSnackBar(message: string, action: string = 'ok') {
-    this._snackBar.open(message, action, {
+  /**
+   * Opens a snack bar with the specified message and optional action.
+   *
+   * @param message - The message to display in the snack bar.
+   * @param action - (Optional) The action text to display. Default is 'ok'.
+   */
+  openSnackBar(message: string, action: string = 'ok'): void {
+    this.snackBar.open(message, action, {
       duration: 1000,
       verticalPosition: 'top',
     });

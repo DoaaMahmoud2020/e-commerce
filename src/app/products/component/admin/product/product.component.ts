@@ -1,42 +1,37 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
   ViewChild,
   TemplateRef,
+  OnDestroy,
 } from '@angular/core';
 import { CommonService } from '../../../../shared/services/common.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from 'src/app/products/models/product';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductAddEditComponent } from '../product-add-edit/product-add-edit.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   @ViewChild('dialogRef') dialogRef!: TemplateRef<any>;
-  constructor(private common: CommonService, public dialog: MatDialog) {}
+  constructor(private commonService: CommonService, public dialog: MatDialog) {}
 
   loading: boolean = false;
-  displayedColumns: string[] = [
-    'id',
-    'title',
-    'price',
-    // 'description',
-    'category',
-    'action',
-    // 'image',
-  ];
+  displayedColumns: string[] = ['id', 'title', 'price', 'category', 'action'];
 
   productData: Product[] = [];
   pageSizes = [5, 10, 20];
   productId: number;
   dataSource!: MatTableDataSource<Product>;
   dataSourceWithPageSize!: MatTableDataSource<Product>;
+  // Create a variable to store the subscription
+  private productsSubscription: Subscription;
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild('paginatorPageSize') paginatorPageSize!: MatPaginator;
@@ -44,11 +39,15 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts();
   }
-
-  getAllProducts() {
+  /**
+   * Retrieves all products from the server.
+   * Sets the loading flag, makes an HTTP GET request, and handles the response.
+   * Updates the productData array, performs necessary setup for MatTable, and resets the loading flag.
+   */
+  getAllProducts(): void {
     this.loading = true;
-    this.common.get('products', {}).subscribe(
-      (result: any) => {
+    this.productsSubscription=this.commonService.get('products', {}).subscribe(
+      (result: Product[]) => {
         this.productData = result;
         this.settingForMatTable();
         this.loading = false;
@@ -63,10 +62,15 @@ export class ProductComponent implements OnInit {
     this.dataSourceWithPageSize.paginator = this.paginatorPageSize;
   }
 
-  deleteProduct() {
+  /**
+   * Deletes a product from the server.
+   * Sets the loading flag, makes an HTTP DELETE request, and handles the response.
+   * Calls getAllProducts() to refresh the product list and resets the loading flag.
+   */
+  deleteProduct(): void {
     this.loading = true;
-    this.common.delete('products/' + this.productId, {}).subscribe(
-      (response) => {
+    this.commonService.delete('products/' + this.productId, {}).subscribe(
+      (next) => {
         this.getAllProducts();
         this.loading = false;
       },
@@ -76,10 +80,10 @@ export class ProductComponent implements OnInit {
     );
   }
 
- /**
-  * The function opens a dialog box and passes the product id to the dialog box
-  * @param {number} id - number - the id of the product that we want to delete
-  */
+  /**
+   * The function opens a dialog box and passes the product id to the dialog box
+   * @param {number} id - number - the id of the product that we want to delete
+   */
   openTempDialog(id: number) {
     this.productId = id;
     const myTempDialog = this.dialog.open(this.dialogRef, {
@@ -89,12 +93,12 @@ export class ProductComponent implements OnInit {
       this.getAllProducts();
     });
   }
-/**
- * It opens a dialog box with the ProductAddEditComponent component, and when the dialog box is closed,
- * it calls the getAllProducts() function to refresh the list of products
- * @param {any} data - any - This is the data that will be passed to the dialog component.
- */
-  openEditForm(data: any) {
+  /**
+   * It opens a dialog box with the ProductAddEditComponent component, and when the dialog box is closed,
+   * it calls the getAllProducts() function to refresh the list of products
+   * @param {Object} data - Object - This is the data that will be passed to the dialog component.
+   */
+  openEditForm(data: Object) {
     const dialogRef = this.dialog.open(ProductAddEditComponent, {
       data,
     });
@@ -106,9 +110,9 @@ export class ProductComponent implements OnInit {
       },
     });
   }
-/**
- * It opens a dialog box, and when the dialog box is closed, it calls the getAllProducts() function
- */
+  /**
+   * It opens a dialog box, and when the dialog box is closed, it calls the getAllProducts() function
+   */
   openAddEditProdForm() {
     const dialogRef = this.dialog.open(ProductAddEditComponent);
     dialogRef.afterClosed().subscribe({
@@ -118,5 +122,8 @@ export class ProductComponent implements OnInit {
         }
       },
     });
+  }
+  ngOnDestroy(): void {
+    this.productsSubscription.unsubscribe();
   }
 }
