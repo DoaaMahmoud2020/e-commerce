@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -17,7 +16,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeComponent } from './home/home.component';
 import { SwiperModule } from 'swiper/angular';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ContactUsComponent } from './contact-us/component/contact-us/contact-us.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,9 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    // MatTableModule,
-    // MatPaginatorModule,
-    // MatCardModule,
     ReactiveFormsModule,
     SwiperModule,
     MatSnackBarModule

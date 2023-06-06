@@ -89,4 +89,7 @@ export class CommonService {
       verticalPosition: 'top',
     });
   }
+  trackByFn(index: number, item: any): number {
+    return item.id; // Assuming each item has a unique "id" property
+  }
 }

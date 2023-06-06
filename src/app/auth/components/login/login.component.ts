@@ -7,6 +7,7 @@ import {
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { roles, userModel } from '../../models/user';
+import { LocalService } from 'src/app/shared/services/local.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
   ];
   constructor(
     private fb: FormBuilder,
-    private oommonService: CommonService,
-    private router: Router
+    private commonService: CommonService,
+    private router: Router,
+    private localStore: LocalService
   ) { }
 
   ngOnInit() { }
@@ -47,8 +49,8 @@ export class LoginComponent implements OnInit {
         );
       });
       if (userInfo) {
-        localStorage.setItem('user', JSON.stringify(userInfo));
-        this.oommonService.userInfo.next(userInfo);
+        this.localStore.saveData('user',JSON.stringify(userInfo));
+        this.commonService.userInfo.next(userInfo);
         this.router.navigate(['/']);
       }
       else

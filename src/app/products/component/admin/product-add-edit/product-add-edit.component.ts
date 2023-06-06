@@ -14,11 +14,12 @@ export class ProductAddEditComponent implements OnInit, OnDestroy {
 
   categoriesData: string[] = [];
   // Create a variable to store the subscription
+  
   private categoriesSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private dialogRef: MatDialogRef<ProductAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {

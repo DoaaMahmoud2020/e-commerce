@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 import { userModel } from '../../models/user';
+import { LocalService } from '../../services/local.service';
 
 @Component({
   selector: 'app-header',
@@ -16,18 +17,19 @@ export class HeaderComponent implements OnInit {
     public common: CommonService,
     private router: Router,
     public translate: TranslateService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private localStore: LocalService
   ) {
     translate.setDefaultLang('en');
   }
   defaultLang: string = 'en';
- /**
-  * A lifecycle hook that is called after a component's data-bound properties have been initialized.
-  */
+  /**
+   * A lifecycle hook that is called after a component's data-bound properties have been initialized.
+   */
   ngOnInit(): void {
     const userInfo = this.common.userInfo.value;
     if (userInfo == null) {
-      const data = JSON.parse(localStorage.getItem('user') ?? '{}');
+      const data = JSON.parse(this.localStore.getData('user') ?? '{}');
       this.common.userInfo.next(data as userModel);
     }
   }
@@ -36,7 +38,7 @@ export class HeaderComponent implements OnInit {
    */
   singout() {
     this.common.userInfo.next(null);
-    localStorage.clear();
+    this.localStore.clearData();
     this.router.navigate(['/login']);
   }
   /**
@@ -50,7 +52,7 @@ export class HeaderComponent implements OnInit {
     htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);
-    localStorage.setItem('defaultLang', lang);
+    this.localStore.saveData('defaultLang', lang);
     this.defaultLang = lang;
     // this.changeCssFile(lang);
   }

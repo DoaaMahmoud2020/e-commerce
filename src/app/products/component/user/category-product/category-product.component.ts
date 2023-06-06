@@ -8,7 +8,7 @@ import { CommonService } from 'src/app/shared/services/common.service';
   styleUrls: ['./category-product.component.scss'],
 })
 export class CategoryProductComponent implements OnInit {
-  constructor(private CommonService: CommonService) {}
+  constructor(public commonService: CommonService) {}
   categoriesData: [] = [];
   loading: boolean = false;
 
@@ -25,7 +25,7 @@ export class CategoryProductComponent implements OnInit {
    */
   getAllCategories() {
     this.loading = true;
-    this.CommonService.get('products/categories', {}).subscribe({
+    this.commonService.get('products/categories', {}).subscribe({
       next: (result: []) => {
         this.categoriesData = result;
         this.loading = false;
@@ -41,7 +41,7 @@ export class CategoryProductComponent implements OnInit {
  */
   getProductsByCateg(categoryName: string) {
     this.loading = true;
-    this.CommonService.get('products/category/' + categoryName, {}).subscribe({
+    this.commonService.get('products/category/' + categoryName, {}).subscribe({
       next: (result: Product[]) => {
         this.productsData = result;
         this.loading = false;
